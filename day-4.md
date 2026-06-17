@@ -4,11 +4,21 @@ Problem:
 leetcode link:
 
 ```js
-//js solution
+function groupAnagrams(strs) {
+  const map = {};
+  for (let i = 0; i < strs.length; i++) {
+    const key = strs[i].split('').sort().join('');
+    if (map[key] === undefined) {
+      map[key] = [];
+    }
+    map[key].push(strs[i]);
+  }
+  return Object.values(map);
+}
 ```
-Input:
+Input: nums: List[integer]
 
-Output:
+Output: List[integer]
 
 Algorith:
 
@@ -16,5 +26,16 @@ Algorith:
 Python Solution:
 
 ```py
-# solution here
+def groupAnagrams(strs):
+    anagram_map = {}
+
+    for word in strs:
+        key = ''.join(sorted(word))
+
+        if key not in anagram_map:
+            anagram_map[key] = []
+
+        anagram_map[key].append(word)
+
+    return list(anagram_map.values())
 ```
